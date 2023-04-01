@@ -1,0 +1,24 @@
+name: 保持运行
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: '0 8 */7 * *'
+jobs:
+   avoid:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: keep
+    - name: Make commits
+      run: |
+              echo "avoid" >> avoid.txt
+              git config --local user.name "github-actions[bot]"
+              git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git add .
+              git commit -a  -m "机器人🤖-保持运行"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: keep

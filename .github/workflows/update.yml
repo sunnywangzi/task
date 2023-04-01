@@ -1,0 +1,72 @@
+name: 从上游更新任务
+on:
+    workflow_dispatch:
+jobs:
+   freenom:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Make commits
+      run: |
+              git clone https://github.com/luolongfei/freenom.git
+              rm -rf ./freenom/.git
+              rm -rf ./github
+              rm -rf ./README.md
+              cp -r  ./freenom/* ./
+              rm -rf ./freenom
+              git config --local user.name "github-actions[bot]"
+              git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git add .
+              git commit -a  -m "机器人🤖-更新"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        force: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: freenom
+
+   BiliBiliToolPro:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Make commits
+      run: |
+              git clone https://github.com/RayWangQvQ/BiliBiliToolPro.git
+              rm -rf ./BiliBiliToolPro/.git
+              rm -rf ./github
+              rm -rf ./README.md
+              cp -r  ./BiliBiliToolPro/* ./
+              rm -rf ./BiliBiliToolPro
+              git config --local user.name "github-actions[bot]"
+              git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git add .
+              git commit -a  -m "机器人🤖-更新"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        force: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: BiliBiliToolPro
+
+   BILI_judgement:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Make commits
+      run: |
+              git clone https://github.com/dd178/BILI_judgement.git
+              rm -rf ./BILI_judgement/.git
+              rm -rf ./github
+              rm -rf ./README.md
+              cp -r  ./BILI_judgement/* ./
+              rm -rf ./BILI_judgement
+              git config --local user.name "github-actions[bot]"
+              git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git add .
+              git commit -a  -m "机器人🤖-更新"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        force: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: BILI_judgement
