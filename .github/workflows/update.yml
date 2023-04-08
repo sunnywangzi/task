@@ -1,8 +1,13 @@
 name: 从上游更新任务
 on:
-    workflow_dispatch:
+  workflow_dispatch:
+     inputs:
+      job:
+        description: '选择需要更新的任务'
+        required: true
 jobs:
    freenom:
+    if: ${{ github.event.inputs.job == 'freenom' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -26,6 +31,7 @@ jobs:
         branch: freenom
 
    BiliBiliToolPro:
+    if: ${{ github.event.inputs.job == 'BiliBiliToolPro' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -49,6 +55,7 @@ jobs:
         branch: BiliBiliToolPro
 
    BILI_judgement:
+    if: ${{ github.event.inputs.job == 'BILI_judgement' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
