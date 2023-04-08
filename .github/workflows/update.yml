@@ -5,6 +5,11 @@ on:
       job:
         description: '选择需要更新的任务'
         required: true
+        type: choice
+        options:
+        - BILI_judgement
+        - BiliBiliToolPro
+        - freenom
 jobs:
    freenom:
     if: ${{ github.event.inputs.job == 'freenom' }}
